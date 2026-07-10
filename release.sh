@@ -17,9 +17,6 @@ sed -i .bak "s;/\*app-version\*/.*/\*app-version\*/;/\*app-version\*/\"${tag}\"/
 rm index.html.bak
 rm js/background.js.bak
 
-echo "---Minifying JS and CSS"
-gulp
-
 sed "s/\"version.*/\"version\": \"${tag}\",/" manifest.json > manifest.tmp;
 mv manifest.tmp manifest.json
 git commit -m "Release $tag" manifest.json js/background.js index.html
