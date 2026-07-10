@@ -1,23 +1,31 @@
 {
+  "manifest_version": 3,
+  "name": "News Tab - New Tab Page Replacement",
+  "short_name": "News Tab",
+  "description": "An Google Now themed top news stories reader for your New Tab page",
+  "version": "0.1.5",
 
   "chrome_url_overrides": {
     "newtab": "index.html"
   },
-  "content_security_policy": "script-src 'self' https://query.yahooapis.com https://ssl.google-analytics.com; object-src 'self'",
 
-  "description": "An Google Now themed top news stories reader for your New Tab page",
-  "manifest_version": 2,
-  "name": "News Tab - New Tab Page Replacement",
+  "icons": {
+    "16": "images/icon-16.png",
+    "128": "images/icon-128.png"
+  },
+
   "permissions": [
-    "https://news.google.com/",
-    "https://query.yahooapis.com/",
     "storage",
     "topSites",
-    "chrome://favicon/",
     "unlimitedStorage"
   ],
-  "short_name": "News Tab",
-  "version": "0.1.5",
-  "icons": { "16": "images/icon-16.png",
-    "128": "images/icon-128.png" }
+
+  "host_permissions": [
+    "https://news.google.com/*",
+    "https://query.yahooapis.com/*"
+  ],
+
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  }
 }
