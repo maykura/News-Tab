@@ -36,6 +36,13 @@ function clearFeed() {
 	$('#rss-content').empty();
 }
 
+function faviconURL(u) {
+	const url = new URL(chrome.runtime.getURL("/_favicon/"));
+	url.searchParams.set("pageUrl", u);
+	url.searchParams.set("size", "16"); // The most common size is 16 x 16 pixels
+	return url.toString();
+}
+
 function loadAndDisplayMostVisited() {
 	if(settings.SHOW_MOST_VISITED) {
 		$('#most-visited-row').fadeIn(250);
@@ -43,8 +50,9 @@ function loadAndDisplayMostVisited() {
 			$('.most-visited-site').each(
 				function (index) {
 					if(data[index] != null) {
+					    var favUrl = faviconURL(data[index].url);
 						$(this).html('<a href="' + data[index].url + '">' +
-							 '<img width="15px" height="15px" src="chrome://favicon/' + data[index].url + '"> ' + data[index].title +
+							 '<img width="15px" height="15px" src="' + favUrl + '"> ' + data[index].url + '"> ' + data[index].title +
 							'</a>');
 					}
 				}

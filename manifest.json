@@ -17,7 +17,8 @@
   "permissions": [
     "storage",
     "topSites",
-    "unlimitedStorage"
+    "unlimitedStorage",
+    "favicon"
   ],
 
   "host_permissions": [
