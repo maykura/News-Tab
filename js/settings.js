@@ -8,8 +8,6 @@ var settings =  { //default settings
 	SHOW_DESCRIPTION: true,
 	SHOW_MOST_VISITED: true,
 	DARK_MODE: false,
-	WEATHER_LOCATION: 'Austin, TX',
-	WEATHER_UNITS: 'f',
 	GOOGLE_REGION: 'UNITED_STATES_ENGLISH',
 	GOOGLE_TOPIC: 'TOP_STORIES'
 };
@@ -23,8 +21,6 @@ function saveSettingsItems(event) {
 	var showDescription = $('#showDescription').is(':checked');
 	var showMostVisited = $('#showMostVisited').is(':checked');
 	var darkMode = $('#darkMode').is(':checked');
-	var weatherLocation = $('#weather-location').val();
-	var weatherUnits = $('#weather-units').val();
 	var googleTopic = $('#googleTopic').val();
 	var googleRegion = $('#googleRegion').val();
 
@@ -36,8 +32,6 @@ function saveSettingsItems(event) {
 		SHOW_DESCRIPTION: showDescription,
 		SHOW_MOST_VISITED: showMostVisited,
 		DARK_MODE: darkMode,
-		WEATHER_LOCATION: weatherLocation,
-		WEATHER_UNITS: weatherUnits,
 		GOOGLE_TOPIC: googleTopic,
 		GOOGLE_REGION: googleRegion
 	};
@@ -50,10 +44,6 @@ function saveSettingsItems(event) {
 	//bust the cache
 	addToTimedCache(PARSED_FEED_CACHE_KEY, "");
 	loadAndDisplayFeed();
-
-	//bust the cache
-	addToTimedCache(WEATHER_CACHE_KEY, "");
-	loadAndDisplayWeather();
 
 	setObject(settings,
 		function() {
@@ -102,8 +92,6 @@ function updateSettingsItems(event) {
 	$('#showDescription').prop('checked', settings.SHOW_DESCRIPTION);
 	$('#showMostVisited').prop('checked', settings.SHOW_MOST_VISITED);
 	$('#darkMode').prop('checked', settings.DARK_MODE);
-	$('#weather-location').val(settings.WEATHER_LOCATION);
-	$('#weather-units').val(settings.WEATHER_UNITS);
 	$('#googleTopic').val(settings.GOOGLE_TOPIC);
 	$('#googleRegion').val(settings.GOOGLE_REGION);
 }
